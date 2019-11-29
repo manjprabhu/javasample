@@ -9,7 +9,6 @@ public class OddEven {
     private int count =1, maxLimit = 100;
     private Object object = new Object();
 
-
     public OddEven() {
         CreateThread();
         oThread.start();
@@ -18,7 +17,6 @@ public class OddEven {
 
     private void CreateThread() {
         Log.v(TAG,"CreateThread");
-
         oThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -86,6 +84,4 @@ public class OddEven {
             }
         });
     }
-
-
 }
