@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        ProducerConsumer producerConsumer = new ProducerConsumer();
+        ProducerConsumer producerConsumer = new ProducerConsumer();
 //        OddEven oddEven = new OddEven();
         ArrayAlg largetNumber = new ArrayAlg();
 //        CreateThread();

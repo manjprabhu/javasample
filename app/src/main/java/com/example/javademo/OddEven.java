@@ -41,7 +41,7 @@ public class OddEven {
                                 e.printStackTrace();
                             }
                         } else {
-                            Log.v("manju","Odd thread and Odd Number:"+count);
+                            Log.v(TAG,"Odd thread and Odd Number:"+count);
                             count = count + 1;
                             object.notify();
                         }*/
@@ -73,7 +73,7 @@ public class OddEven {
                                 }
 
                             } else {
-                                Log.v("manju"," Even thread and Even Number:"+count);
+                                Log.v(TAG," Even thread and Even Number:"+count);
                                 count = count +1;
                                 object.notify();
                             }*/
