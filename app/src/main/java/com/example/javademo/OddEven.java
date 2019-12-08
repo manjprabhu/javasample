@@ -5,7 +5,7 @@ import android.util.Log;
 public class OddEven {
 
     private final String TAG  = OddEven.class.getSimpleName();
-    Thread oThread, eThread;
+    private Thread oThread, eThread;
     private int count =1, maxLimit = 100;
     private Object object = new Object();
 

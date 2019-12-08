@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();
 
-    Thread thread1, thread2;
+    private Thread thread1, thread2;
 
     private Object object1 = new Object();
     private Object object2 = new Object();
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         ProducerConsumer producerConsumer = new ProducerConsumer();
 //        OddEven oddEven = new OddEven();
-        ArrayAlg largetNumber = new ArrayAlg();
+        ArrayAlg largestNumber = new ArrayAlg();
 //        CreateThread();
 //        thread1.start();
 //        thread2.start();

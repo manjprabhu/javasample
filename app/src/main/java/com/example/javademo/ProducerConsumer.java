@@ -11,7 +11,7 @@ public class ProducerConsumer {
     private final String TAG =  ProducerConsumer.class.getSimpleName();
 
     private Thread pThread, cThread;
-    private Object object = new Object();
+    private final Object object = new Object();
     private int count = 0, maxLimit = 20;
 
     public ProducerConsumer() {
