@@ -2,6 +2,10 @@ package com.example.javademo;
 
 import android.util.Log;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class ArrayAlg {
 
     private final String TAG = ArrayAlg.class.getSimpleName();
@@ -10,13 +14,19 @@ public class ArrayAlg {
     private int smallest = array[0];
 
     public ArrayAlg() {
-        findLargert();
-        findSmallest();
-        secondlargest();
-        secondSmallest();
-        reversearray();
-        thirdLargest();
-        factorial(5);
+//        findLargert();
+//        findSmallest();
+//        secondlargest();
+//        secondSmallest();
+//        reversearray();
+//        thirdLargest();
+//        factorial(5);
+
+//        findRecurringElementinArray();
+//        findMissingNumber();
+//        findsingleDuplicateNumber();
+
+        countoccurence();
     }
 
     private void findLargert() {
@@ -117,5 +127,126 @@ public class ArrayAlg {
         }
         Log.v(TAG, "Factorial:" + fact);
     }
+
+    private void findRecurringElementinArray() {
+
+        Log.v("manju","findDuplicate:");
+
+        int arr1[] = {1, 4,3,6,7,3,7,6};
+
+        //using hashmap
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count =0;
+
+        for(int i =0;i<arr1.length;i++) {
+
+            if(map.get(arr1[i])!=null) {
+                Log.v("manju","findDuplicate!=null:"+i);
+                count = map.get(arr1[i]);
+                map.put(arr1[i],count+1);
+                count = 0;
+            } else {
+                Log.v("manju","findDuplicate==null:"+i);
+                map.put(arr1[i],count+1);
+                count = 0;
+            }
+        }
+        Iterator iterator = map.entrySet().iterator();
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+
+            Log.v("manju","Key:"+key +" Value:"+value);
+            if(value >1) {
+//                    Log.v("manju","value:"+value);
+                Log.v("manju","Duplicate Element:"+key);
+            }
+        }
+
+        // end of using hashmap
+
+    }
+
+    private void findMissingNumber() {
+        Log.v("manju","findMissingNumber");
+        int arr1[] = {1,2,3,5,6,7,8,9,10};
+
+        int sum = 0,sum1=0, n =10;
+
+
+        for(int i =0;i<arr1.length;i++) {
+            sum = sum + arr1[i];
+        }
+        sum1 = (n*(n+1)) /2;
+
+        int missingnumber  =  sum1-sum;
+        Log.v("manju","Missing number:"+missingnumber);
+    }
+
+    private void findcommonNumberfromarray() {
+        int arr1[] = {1,2,3,5,6,7,8};
+        int arr2[] = {2,4,9,10,23};
+
+        for(int i =0;i<arr1.length;i++) {
+
+            for(int j=0;j<arr2.length;j++) {
+                if(arr1[i]==arr2[j]) {
+                    Log.v(TAG,"");
+                }
+            }
+        }
+    }
+
+    private void findsingleDuplicateNumber() {
+
+        Log.v("manju","findsingleDuplicateNumber");
+
+        int arr1[] = {1,2,2,5,6,7,8,9,10};
+
+        int sum = 0,sum1=0, n =10;
+
+        for(int i =0;i< arr1[i];i++) {
+            sum  = sum + arr1[i];
+        }
+
+        Log.v("manju","sum:"+sum);
+
+        sum1 = (n * (n+1)) /2 ;
+
+        int duplicateNumber  =  sum1-sum;
+        Log.v("manju","Missing number:"+duplicateNumber);
+    }
+
+    //Count the occurence of each element in array.
+    //Create a hashmap with elements in array as Keys and number of occurence as Value.
+    // Every time loop through the array, check if element in the array is already present
+    //in Hashmap, if present get the count, increment it by one and put it back to hashmap.
+    //if element is not present simply put the count as 1.
+
+    private void countoccurence() {
+        int[] array = {1,7,3,5,3,4,3,4,6,6,6,6};
+        HashMap<Integer,Integer> countMap =  new HashMap<>();
+
+        for (int i=0;i<array.length;i++) {
+            int count  = 1;
+            if(countMap.containsKey(array[i])) {
+                count = countMap.get(array[i]);
+                count = count + 1;
+                countMap.put(array[i],count);
+            } else {
+                countMap.put(array[i],count);
+            }
+        }
+
+        for(Map.Entry<Integer,Integer> entry : countMap.entrySet()) {
+            Log.v(TAG,"Key:"+entry.getKey()+"Value:"+entry.getValue());
+        }
+    }
+
+    private void countOccurenceofWord() {
+        String[] words = {"hi","hi"};
+    }
+
+
 
 }

@@ -21,8 +21,7 @@ public class OddEven {
             @Override
             public void run() {
                 while (count != maxLimit) {
-//                    synchronized (object) {
-
+                    synchronized (object) {
                         if (count%2 == 0) {
                             try {
                                 object.wait();
@@ -47,7 +46,7 @@ public class OddEven {
                         }*/
                     }
                 }
-//            }
+            }
         });
 
         eThread = new Thread(new Runnable() {

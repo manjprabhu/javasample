@@ -1,9 +1,9 @@
 package com.example.javademo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 //DeadLock example
 public class MainActivity extends AppCompatActivity {
@@ -20,12 +20,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProducerConsumer producerConsumer = new ProducerConsumer();
+//        DeadLock deadLock = new DeadLock();
+//        ProducerConsumer producerConsumer = new ProducerConsumer();
 //        OddEven oddEven = new OddEven();
-        ArrayAlg largestNumber = new ArrayAlg();
+//        ArrayAlg largestNumber = new ArrayAlg();
+        StringAlg stringAlg = new StringAlg();
 //        CreateThread();
 //        thread1.start();
 //        thread2.start();
+
+//        findsmallest();
+//        findLargest();
+//        factorial();
+//        secondLargest();
     }
 
 
@@ -74,4 +81,61 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void findsmallest() {
+        int[] array = {1, 4, 6, 41, 4, 6, 89, 100, 9, 56};
+
+        int smallest = Integer.MAX_VALUE;
+
+        for(int i =0;i<array.length;i++) {
+            if(array[i] < smallest) {
+                smallest = array[i];
+            }
+        }
+        Log.v(TAG,"smallest:"+smallest);
+    }
+
+    private void findLargest() {
+        int[] array = {1, 4, 6, 410, 4, 6, 89, 10, 9, 56};
+
+        int largest = Integer.MIN_VALUE;
+
+        for(int i=0;i<array.length;i++) {
+            if(array[i] > largest) {
+                largest = array[i];
+            }
+        }
+        Log.v(TAG,"largest:"+largest);
+    }
+
+    private void factorial() {
+        int n =6;
+        int fact = 1;
+        for(int i= n;i>0;i--) {
+            fact = fact * i;
+        }
+        Log.v(TAG,"fact:"+fact);
+    }
+
+    private void secondLargest() {
+        int[] array = {10,4,7,2,99,23,41,-61,11};
+
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+
+        for( int i=0;i<array.length;i++) {
+            if(array[i] > largest && array[i] > secondLargest) {
+                secondLargest = largest;
+                largest = array[i];
+            } else if( array[i] < largest && array[i] > secondLargest) {
+                secondLargest = array[i];
+            }
+        }
+
+        Log.v(TAG,"==>> Largest:"+largest);
+        Log.v(TAG,"==>> SecondLargest:"+secondLargest);
+    }
+
+
 }
