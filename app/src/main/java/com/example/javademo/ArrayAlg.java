@@ -10,76 +10,159 @@ public class ArrayAlg {
 
     private final String TAG = ArrayAlg.class.getSimpleName();
     private int[] array = {1, 4, 6, 41, 4, 6, 89, 100, 9, 56};
-    private int largest = array[0];
-    private int smallest = array[0];
 
     public ArrayAlg() {
-//        findLargert();
-//        findSmallest();
-//        secondlargest();
-//        secondSmallest();
-//        reversearray();
-//        thirdLargest();
-//        factorial(5);
-
-//        findRecurringElementinArray();
-//        findMissingNumber();
-//        findsingleDuplicateNumber();
-
-        countoccurence();
+        factorial();
     }
 
-    private void findLargert() {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > largest) {
-                largest = array[i];
-            }
-        }
-        Log.v(TAG, "Largest Number is :" + largest);
-    }
-
-    private void findSmallest() {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < smallest) {
-                smallest = array[i];
-            }
-        }
-        Log.v(TAG, "Smallest Number is :" + smallest);
-    }
-
-    private void secondlargest() {
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MIN_VALUE;
-
-        for (int i = 0; i < array.length; i++) {
-
-            if (array[i] > largest && array[i] > secondLargest) {
-                secondLargest = largest;
-                largest = array[i];
-            } else if (array[i] < largest && array[i] > secondLargest) {
-                secondLargest = array[i];
-            }
-        }
-        Log.v(TAG, "Second largest number is :" + secondLargest);
-        Log.v(TAG, "Largest number is :" + largest);
-    }
-
-    private void secondSmallest() {
+    private void  findSmallestElement() {
+        int[] array = {1, 4, 6, 41, 4, 6, 89, 100, 9, 56};
+        int arrayLength = array.length;
 
         int smallest = Integer.MAX_VALUE;
-        int secondSmallest = Integer.MAX_VALUE;
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < smallest && array[i] < secondSmallest) {
+        for(int i =0;i<arrayLength;i++) {
+
+            if(array[i] < smallest) {
+                smallest = array[i];
+            }
+        }
+        Log.v(TAG,"Smallest element in array is:"+smallest);
+    }
+
+    private void findLargestElement() {
+        int[] array = {1, 4, 6, 41, 4, 6, 89, 10, -9, 56};
+        int arrayLength = array.length;
+
+        int largest = Integer.MIN_VALUE;
+
+        for(int i=0;i<arrayLength;i++) {
+
+            if(array[i] > largest) {
+
+                largest = array[i];
+            }
+        }
+        Log.v(TAG,"Largest element in array is:"+largest);
+    }
+
+    private void findSecondLargestElement() {
+        int[] array = {1, 4, -6, 40, 4, 6, 89, 100, -9, 56};
+        int arrayLength = array.length;
+
+        int largest = Integer.MIN_VALUE,secondlargest = Integer.MIN_VALUE;
+
+        for(int i=0;i<arrayLength;i++) {
+
+            if(array[i] > largest && array[i] > secondlargest) {
+                secondlargest = largest;
+                largest = array[i];
+            } else if(array[i] < largest && array[i] > secondlargest) {
+                secondlargest = array[i];
+            }
+        }
+        Log.v(TAG,"Largest Element:"+ largest + " SecondLargest:"+ secondlargest);
+    }
+
+    private void findSecondSmallestElement() {
+        int[] array = {10, 4, -6, 40, 4, 6, 89, 100, 9, 56};
+        int arrayLength = array.length;
+
+        int smallest = Integer.MAX_VALUE, secondSmallest= Integer.MAX_VALUE;
+
+        for(int i=0;i<arrayLength;i++) {
+
+            if(array[i] < smallest && array[i] < secondSmallest) {
+
                 secondSmallest = smallest;
                 smallest = array[i];
-            } else if (array[i] < secondSmallest && array[i] > smallest) {
+            } else if(array[i] > smallest && array[i] < secondSmallest) {
                 secondSmallest = array[i];
             }
         }
+        Log.v(TAG,"Smallest Element:"+ smallest + " secondSmallest:"+ secondSmallest);
+    }
 
-        Log.v(TAG, "Second smallest number is :" + secondSmallest);
-        Log.v(TAG, "smallest number is :" + smallest);
+
+    private void isPrimeNumber() {
+        int num =39;
+        boolean flag = false;
+
+        for(int i=2;i<num/2;i++) {
+            if(num%i==0) {
+                flag = false;
+                break;
+            } else {
+                flag = true;
+            }
+        }
+        if(flag) {
+            Log.v("===",num +" is prime number");
+        } else {
+            Log.v("===",num +" is not a prime number");
+        }
+    }
+
+    private void reverseArray() {
+        int[] array = {1,2,3,4,5,6,7,8};
+        int arrayLength = array.length;
+
+        for(int i=0;i<arrayLength/2;i++) {
+            int temp = array[i];
+            array[i] = array[arrayLength-i-1];
+            array[arrayLength-i-1] = temp;
+        }
+        for(int x : array) {
+            Log.v(TAG,""+x);
+        }
+    }
+
+    private void reverseNumber() {
+        int num  = 105 , reverse = 0;
+
+        while (num !=0) {
+            int r = num % 10;
+            reverse = reverse * 10 + r;
+            num = num/10;
+        }
+        Log.v(TAG,"Reverse Number:"+reverse);
+    }
+
+    private void swapwithoutthirdvar() {
+
+        int x = 10, y = 20;
+
+        int sum = x + y;
+
+        x = sum - x;
+        y = sum - x ;
+
+        Log.v(TAG,"x:"+ x + " y:"+ y);
+    }
+
+    private void factorial() {
+        int n =4, fact =1;
+
+        for(int i=1;i<=n;i++) {
+            fact = fact * i;
+        }
+        Log.v(TAG,"Factorial of "+ n +" is: "+fact);
+    }
+
+    private void isPalindrome() {
+        int x =121, reverse =0;
+        int y =x;
+
+        while(x !=0) {
+            int r = x%10;
+            reverse = reverse * 10 + r;
+            x = x/10;
+        }
+
+        Log.v("===","reverse:"+reverse);
+        if(reverse == y) {
+            Log.v("===","ispalindrome");
+        }
     }
 
     private void thirdLargest() {
@@ -103,29 +186,6 @@ public class ArrayAlg {
         Log.v(TAG, "largest number is :" + largest);
         Log.v(TAG, "Second largest number is :" + secondLargest);
         Log.v(TAG, "third largest number is :" + thirdLargest);
-    }
-
-    private void reversearray() {
-        int temp;
-        for (int i = 0; i < array.length / 2; i++) {
-            temp = array[i];
-            array[i] = array[array.length - i - 1];
-            array[array.length - i - 1] = temp;
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            Log.v(TAG, "R array:" + array[i]);
-        }
-    }
-
-    private void factorial(int number) {
-        int fact = 1;
-
-        for (int i = number; i > 0; i--) {
-            fact = fact * i;
-            Log.v(TAG, "Factorial1:" + fact + "i:" + i);
-        }
-        Log.v(TAG, "Factorial:" + fact);
     }
 
     private void findRecurringElementinArray() {
@@ -242,11 +302,5 @@ public class ArrayAlg {
             Log.v(TAG,"Key:"+entry.getKey()+"Value:"+entry.getValue());
         }
     }
-
-    private void countOccurenceofWord() {
-        String[] words = {"hi","hi"};
-    }
-
-
 
 }
