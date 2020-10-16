@@ -2,69 +2,119 @@ package com.example.javademo;
 
 import android.util.Log;
 
+import java.util.HashMap;
 
 public class dailypractice {
 
-    private int maxLimit = 100, i=1;
-
     public dailypractice() {
-    }
-
-    private void fibonacci() {
-        int n =5, s1 =0, s2 =1,sum =0;
-
-        for(int i=1;i<=n;i++) {
-            Log.v("===",""+s1);
-
-            sum = s1+s2;
-
-            s1 = s2;
-            s2 = sum;
-        }
+        bubblesort();
     }
 
     private void bubblesort() {
 
-        int a[] = {10,21,43,11,65,34,22};
+        int a[] = {10,11,54,54,76,65,65};
 
-        for(int i=0;i<a.length;i++) {
+        for(int x =0;x<a.length;x++) {
 
-            for(int j=0;j<a.length-i-1;j++) {
+            for(int y = 0;y< a.length-x-1;y++) {
 
-                if(a[j] > a[j+1]) {
-
-                    int temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
+                if(a[y] > a[y+1]) {
+                    int temp = a[y];
+                    a[y] = a[y+1];
+                    a[y+1] = temp;
                 }
             }
         }
 
-        for(int x : a) {
-            Log.v("===","x:"+x);
+        for(int B : a) {
+            Log.v("===","m:"+B);
         }
     }
 
     private void selectionsort() {
-        int a[] = {11,32,54,76,21,32,20};
+    }
 
-        for(int i =0;i<a.length;i++) {
-            int min =i;
+    private void smallest() {
+    }
 
-            for(int j =i;j<a.length;j++) {
+    private void secondlargest() {
 
-                if(a[j] < a[min]) {
+    }
 
-                    min =j;
+    private void countoccurence() {
 
-                    int temp = a[i];
-                    a[i] = a[min];
-                    a[min] = temp;
-                }
+        int[] array = {10,11,54,54,76,65,65};
+        int count  =0;
+        HashMap<Integer,Integer> hashMap = new HashMap<>();
+
+        for(int i =0;i<array.length;i++) {
+
+            if(hashMap.containsKey(array[i])) {
+                count = hashMap.get(array[i]);
+                count = count +1;
+                hashMap.put(array[i],count);
+            } else {
+                hashMap.put(array[i],1);
             }
         }
-        for(int x : a) {
-            Log.v("===","x:"+x);
+
+        for(HashMap.Entry<Integer,Integer> entry : hashMap.entrySet()) {
+            Log.v("===","Variable:"+entry.getKey() + "  Occurence:"+entry.getValue());
         }
+
     }
+
+    private void fibonacci() {
+        int n =5;//0,1,1,2,3
+
+        int s1 = 0, s2 =1, sum =1;
+
+        for(int i=0;i<n;i++) {
+            Log.v("===","S1:"+s1);
+            sum = s1 +s2;
+            s1 = s2;
+            s2 = sum;
+        }
+
+
+    }
+
+    private void isPrime() {
+        int n = 91;
+        boolean isprime = false;
+        for(int x =2;x<=n/2;x++) {
+            if(n%x ==0) {
+                isprime = false;
+                break;
+            } else {
+                isprime = true;
+            }
+        }
+
+        if(isprime)
+        Log.v("===",n+ " is prime");
+        else
+            Log.v("===",n+ " is notprime");
+
+    }
+
+    private void reverseNumber() {
+
+        int number = 123, reverse =0;
+
+        while(number !=0) {
+
+            int r = number %10;
+
+            reverse = (reverse *10) + r;
+
+            number = number/10;
+        }
+
+        Log.v("===","Reverse:"+reverse);
+
+
+    }
+
+
 }
