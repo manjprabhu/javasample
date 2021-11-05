@@ -7,6 +7,7 @@ public class OE {
     private final String TAG = OE.class.getSimpleName();
     private Object object = new Object();
     private int value = 1;
+    private int limit  = 100;
 
     public OE() {
        oddThread.start();
@@ -29,7 +30,7 @@ public class OE {
 
     private void printOdd() {
 
-        while(true) {
+        while(value <limit) {
             synchronized (object) {
                 while (value%2 == 0) {
                     try {
@@ -53,7 +54,7 @@ public class OE {
     }
 
     private void printEven() {
-        while (true) {
+        while (value <limit) {
             synchronized (object) {
                 while (value%2 !=0) {
                     try {
