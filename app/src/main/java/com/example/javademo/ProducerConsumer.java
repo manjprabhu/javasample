@@ -25,10 +25,10 @@ public class ProducerConsumer {
         pThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.v(TAG, "run Pthread:" + count);
+                Log.v(TAG, "run Producer:" + count);
                 while (count != maxLimit) {
                     synchronized (object) {
-                        if (list.size()>=1) {
+                        while (list.size()>=1) {
                             try {
                                 object.wait();
                             } catch (InterruptedException e) {
@@ -37,7 +37,7 @@ public class ProducerConsumer {
                         }
                         count++;
                         list.add(count);
-                        Log.v(TAG, "Pthred added the item :" + count);
+                        Log.v(TAG, "Producer produced the item :" + count);
                         object.notify();
                     }
                 }
@@ -47,10 +47,10 @@ public class ProducerConsumer {
         cThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.v(TAG, "run Cthread:" + count);
+                Log.v(TAG, "run Consumer" + count);
                 while (count!= maxLimit) {
                     synchronized (object) {
-                        if (list.isEmpty()) {
+                        while (list.isEmpty()) {
                             try {
                                 object.wait();
                             } catch (InterruptedException e) {
@@ -61,12 +61,12 @@ public class ProducerConsumer {
                         object.notify();
 
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(200);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 
-                        Log.v(TAG, "Cthred removed the item:" + i);
+                        Log.v(TAG, "Consumer consumed the item:" + i);
                     }
                 }
             }
