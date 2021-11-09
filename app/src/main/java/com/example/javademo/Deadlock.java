@@ -11,7 +11,6 @@ public class Deadlock {
         @Override
         public void run() {
             function1();
-
         }
     });
     Thread thread2 = new Thread(new Runnable() {
@@ -27,7 +26,7 @@ public class Deadlock {
     }
 
     private void function1() {
-        synchronized (object1) {
+        synchronized (object) {
             Log.v(TAG, "Thread 1 object :");
             try {
                 Thread.sleep(500);
@@ -35,14 +34,15 @@ public class Deadlock {
                 e.printStackTrace();
             }
 
-            synchronized (object) {
-                Log.v(TAG, "Thread 1 object1 :");
-            }
+            function2();
+//            synchronized (object) {
+//                Log.v(TAG, "Thread 1 object1 :");
+//            }
         }
     }
 
     private void function2() {
-        synchronized (object) {
+        synchronized (object1) {
             Log.v(TAG, "Thread 2 object :");
 
             try {
@@ -51,9 +51,10 @@ public class Deadlock {
                 e.printStackTrace();
             }
 
-            synchronized (object1) {
-                Log.v(TAG, "Thread 2 object1 :");
-            }
+            function1();
+//            synchronized (object1) {
+//                Log.v(TAG, "Thread 2 object1 :");
+//            }
         }
 
     }
