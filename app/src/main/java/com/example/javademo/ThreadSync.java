@@ -7,6 +7,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class ThreadSync {
 
+    //Producer consumer problem using blocking queue.
     private final String TAG = ThreadSync.class.getSimpleName();
 
     void DriverCode() {
